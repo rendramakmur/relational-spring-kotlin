@@ -3,6 +3,7 @@ package relationalapikotlin.relationalapikotlin.service
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import relationalapikotlin.relationalapikotlin.dto.RegistrationDTO
 import relationalapikotlin.relationalapikotlin.entity.Course
 import relationalapikotlin.relationalapikotlin.exception.NotFoundException
 import relationalapikotlin.relationalapikotlin.model.*
@@ -11,6 +12,7 @@ import relationalapikotlin.relationalapikotlin.validate.ValidationUtil
 import java.util.*
 import java.util.stream.Collector
 import java.util.stream.Collectors
+import kotlin.collections.ArrayList
 
 @Service
 class CourseServiceImpl(
@@ -64,16 +66,31 @@ class CourseServiceImpl(
         )
     }
 
-    override fun getCourseById(id: Long): CourseResponse {
+    override fun getCourseById(id: Long): CourseRegistrationResponse {
         val course = findByIdAndCheckExistance(id)
+//        val registrationsDto: ArrayList<RegistrationDTO> = ArrayList()
+//        course.registrations?.forEach {
+//            var registrationDto = RegistrationDTO(
+//                id = it.id,
+////                course = it.course,
+////                user = it.user,
+//                registeredAt = it.registeredAt
+//            )
+//
+//            registrationsDto.add(registrationDto)
+//        }
+        course.registrations?.forEach {
+            println(it.id.toString())
+        }
 
-        return CourseResponse(
+        return CourseRegistrationResponse(
             id = course.id,
             title = course.title,
             category = course.category,
             url = course.url,
             createdAt = course.createdAt,
-            updatedAt = course.updatedAt
+            updatedAt = course.updatedAt,
+            registrations = null
         )
     }
 

@@ -32,5 +32,5 @@ data class User (
     var updatedAt: Date? = null,
 
     @OneToMany(mappedBy = "user")
-    val registration: Set<Registration>? = null
+    val registrations: Set<CourseRegistration>? = null
 )

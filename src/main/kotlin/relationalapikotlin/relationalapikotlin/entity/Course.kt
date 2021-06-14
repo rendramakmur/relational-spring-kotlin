@@ -28,6 +28,6 @@ data class Course (
     @Column(name = "updated_at")
     var updatedAt: Date? = null,
 
-    @OneToMany(mappedBy = "course")
-    val registrations: Set<Registration>? = null
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    val registrations: Set<CourseRegistration>? = null
 )
