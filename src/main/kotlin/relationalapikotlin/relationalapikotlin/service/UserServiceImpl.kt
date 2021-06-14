@@ -5,11 +5,17 @@ import relationalapikotlin.relationalapikotlin.entity.User
 import relationalapikotlin.relationalapikotlin.model.RegisterRequest
 import relationalapikotlin.relationalapikotlin.model.RegisterResponse
 import relationalapikotlin.relationalapikotlin.repository.UserRepository
+import relationalapikotlin.relationalapikotlin.validate.ValidationUtil
 import java.util.*
 
 @Service
-class UserServiceImpl (val userRepository: UserRepository): UserService {
+class UserServiceImpl (
+    val userRepository: UserRepository,
+    val validationUtil: ValidationUtil
+    ): UserService {
     override fun register(registerRequest: RegisterRequest): RegisterResponse {
+        validationUtil.validate(registerRequest)
+
         val user = User(
             email = registerRequest.email,
             firstName = registerRequest.firstName,

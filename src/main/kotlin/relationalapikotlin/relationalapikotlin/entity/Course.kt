@@ -13,10 +13,10 @@ data class Course (
     val id: Long? = null,
 
     @Column(name = "title")
-    val title: String? = null,
+    var title: String? = null,
 
     @Column(name = "url")
-    val url: String? = null,
+    var url: String? = null,
 
     @Column(name = "category")
     var category: String? = null,
