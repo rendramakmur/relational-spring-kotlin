@@ -1,6 +1,8 @@
 package relationalapikotlin.relationalapikotlin.model
 
 import relationalapikotlin.relationalapikotlin.dto.RegistrationDTO
+import relationalapikotlin.relationalapikotlin.dto.UserRegistrationDTO
+import relationalapikotlin.relationalapikotlin.entity.CourseRegistration
 import java.util.*
 
 data class CourseRegistrationResponse(
@@ -10,5 +12,5 @@ data class CourseRegistrationResponse(
     val url: String?,
     val createdAt: Date?,
     val updatedAt: Date?,
-    val registrations: List<RegistrationDTO>?
+    val registrations: List<UserRegistrationDTO>?
 )

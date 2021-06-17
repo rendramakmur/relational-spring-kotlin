@@ -4,6 +4,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import relationalapikotlin.relationalapikotlin.dto.RegistrationDTO
+import relationalapikotlin.relationalapikotlin.dto.UserRegistrationDTO
 import relationalapikotlin.relationalapikotlin.entity.Course
 import relationalapikotlin.relationalapikotlin.exception.NotFoundException
 import relationalapikotlin.relationalapikotlin.model.*
@@ -68,20 +69,18 @@ class CourseServiceImpl(
 
     override fun getCourseById(id: Long): CourseRegistrationResponse {
         val course = findByIdAndCheckExistance(id)
-//        val registrationsDto: ArrayList<RegistrationDTO> = ArrayList()
-//        course.registrations?.forEach {
-//            var registrationDto = RegistrationDTO(
-//                id = it.id,
-////                course = it.course,
-////                user = it.user,
-//                registeredAt = it.registeredAt
-//            )
-//
-//            registrationsDto.add(registrationDto)
-//        }
+        val userRegistrationsDto: MutableList<UserRegistrationDTO> = mutableListOf()
         course.registrations?.forEach {
-            println(it.id.toString())
+            var user = UserRegistrationDTO(
+                id = it.user?.id,
+                email = it.user?.email,
+                firstName = it.user?.firstName,
+                lastName = it.user?.lastName
+            )
+
+            userRegistrationsDto.add(user)
         }
+
 
         return CourseRegistrationResponse(
             id = course.id,
@@ -90,7 +89,7 @@ class CourseServiceImpl(
             url = course.url,
             createdAt = course.createdAt,
             updatedAt = course.updatedAt,
-            registrations = null
+            registrations = userRegistrationsDto.toList()
         )
     }
 

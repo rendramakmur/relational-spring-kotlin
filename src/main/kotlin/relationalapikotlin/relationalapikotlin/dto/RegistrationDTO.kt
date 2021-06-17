@@ -6,7 +6,7 @@ import java.util.*
 
 data class RegistrationDTO(
     val id: Long?,
-//    val user: User?,
-//    val course: Course?,
+    val user: User?,
+    val course: Course?,
     var registeredAt: Date?
 )
