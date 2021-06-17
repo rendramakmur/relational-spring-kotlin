@@ -45,7 +45,7 @@ class CourseController(val courseService: CourseService) {
         value = ["/api/course/{id}"],
         produces = ["application/json"]
     )
-    fun getCourseById(@PathVariable("id") id: Long): WebResponse<CourseResponse> {
+    fun getCourseById(@PathVariable("id") id: Long): WebResponse<CourseRegistrationResponse> {
         val getCourseByIdResponse = courseService.getCourseById(id)
 
         return WebResponse(

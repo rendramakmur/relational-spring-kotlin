@@ -1,6 +1,6 @@
 package relationalapikotlin.relationalapikotlin.repository
 
 import org.springframework.data.jpa.repository.JpaRepository
-import relationalapikotlin.relationalapikotlin.entity.Registration
+import relationalapikotlin.relationalapikotlin.entity.CourseRegistration
 
-interface RegistrationRepository: JpaRepository<Registration, Long>
+interface RegistrationRepository: JpaRepository<CourseRegistration, Long>

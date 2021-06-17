@@ -1,5 +1,9 @@
 package relationalapikotlin.relationalapikotlin.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import org.hibernate.annotations.CreationTimestamp
 import java.util.*
 import javax.persistence.*
@@ -31,6 +35,7 @@ data class User (
     @Column(name = "updated_at")
     var updatedAt: Date? = null,
 
-    @OneToMany(mappedBy = "user")
-    val registration: Set<Registration>? = null
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnore
+    val registrations: List<CourseRegistration>? = null
 )

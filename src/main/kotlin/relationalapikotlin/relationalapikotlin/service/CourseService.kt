@@ -7,7 +7,7 @@ interface CourseService {
 
     fun updateCourse(id: Long, updateCourseRequest: UpdateCourseRequest): CourseResponse
 
-    fun getCourseById(id: Long): CourseResponse
+    fun getCourseById(id: Long): CourseRegistrationResponse
 
     fun listOfCourse(listCourseRequest: ListCourseRequest): List<CourseResponse>
 }

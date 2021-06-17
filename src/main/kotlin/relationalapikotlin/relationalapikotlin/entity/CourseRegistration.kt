@@ -1,11 +1,14 @@
 package relationalapikotlin.relationalapikotlin.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(name = "registration")
-data class Registration (
+@Table(name = "course_registration")
+data class CourseRegistration (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
